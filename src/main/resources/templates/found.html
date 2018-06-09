@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>Web Demo</title>
+
+  
+</head>
+<body>
+<p>Insert your data <a href="index">Hello</a></p> 
+
+<form method="put" action="update_delete">
+ <h2>ID:</h2>
+  <h1> </h1><input id="your_id" name="id" type="text" value="identity" readonly> </h1>
+  
+  <h2>First Name:</h2>
+  <input type="text" id="your_first_name" name="first_name" value="old_first_name"/>
+  <h2>Last Name:</h2>
+  <input type="text" id="your_last_name" name="last_name" value="old_last_name"/>
+  <h2>Role:</h2>
+  <input type="text" id="your_role" name="role" value="old_role" />
+  <h2>Email:</h2>
+  <input type="text" id="your_email" name="email" value="old_email"/>
+   <h2>Web Site:</h2>
+  <input type="text" id="your_website" name="website" value="old_website"/>
+  <a href="http://localhost:8090/update_delete?id=your_id&first_name=your_first_name&role=your_role&email=your_email&website=your_website&update=update" ><button  type="submit" id="update" name=update value="update">Update</button></a>
+  <a href="http://localhost:8090/update_delete?id=your_id&last_name=your_last_name&role=your_role&email=your_email&website=your_website&delete=delete" ><button  type="submit" id="delete" name=delete value="delete">Delete</button></a>
+  
+</form>
+</body>
+</html>
