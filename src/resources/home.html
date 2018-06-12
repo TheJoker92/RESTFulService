@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="http://localhost:8090/file?filename=menu.js"></script>
+<link href="http://localhost:8090/file?filename=form.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="http://localhost:8090/file?filename=menu.css" rel="stylesheet">
+<link href="http://localhost:8090/file?filename=body.css" rel="stylesheet">
+
+    <title>Server</title>
+  
+
+</head>
+<body background="http://localhost:8090/file?filename=background.jpeg">
+<div class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction()">Menu
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content" id="myDropdown">
+      <a href="http://localhost:8090/">Home</a>
+      <a href="search">Search</a>
+      <a href="about">About</a>
+    </div>
+    
+  </div> 
+</div>
+<div class="white-box">
+
+<form method="post" action="user/id_set">
+    <h2>Email:</h2>
+  <input type="text" id="your_email" name="email" />
+	<br>
+  <input href="http://localhost:8090/user/your_id/?first_name=your_first_name&last_name=your_last_name&role=your_role&email=your_email&website=your_website" type="submit" id="say-hello-button" value="Submit" />
+</form>
+</div>
+</body>
+</html>

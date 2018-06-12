@@ -1,0 +1,53 @@
+input[type=text], select {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=text] {
+    width: 70%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=text]:hover {
+    background-color: #45a049;
+}
+
+form{
+	width: 140%;
+	height: 20%;
+	align: center;
+	display: inline-block
+}
+
+body { text-align: center; }
+     /* center all items within body, this property is inherited */
+body > * { text-align: left; }
+     /* left-align the CONTENTS all items within body, additionally
+        you can add this text-align: left property to all elements
+        manually */
+.white-box{
+	width: 500px; height: 60%; margin-top: 50px; margin-left: auto; margin-right: auto;   
+  
+background: rgba(255,255,255,0.9);
+padding: 30px;
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+-o-border-radius: 5px;
+border-radius: 5px;
+}
+     /* reduces the width of the form to only what is necessary */

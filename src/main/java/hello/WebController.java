@@ -4,8 +4,11 @@
 package hello;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicLong;
+
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 //HOW PARAMETER ARE PASSED:
-//-SUBMITION: (index) --> submit.html --> (/user/{id})
+//-SUBMITION: (submit) --> submit.html --> (/user/{id})
 //-SEARCHING: (search)--> search.html --> (/found)
 //-HASHMAP: (hashmap)
 
@@ -27,23 +30,26 @@ public class WebController {
 
     private final static AtomicLong counter = new AtomicLong();
 
+    private final static String resource = "src/resources/";
+    
     public Logger logger = LoggerFactory.getLogger("hello.WebController");
     
 	static long id = counter.incrementAndGet();
 
 	
+	
     //GET controller
-	//The function returns a html page in "http://localhost:8090/index" that allows to insert new data
+	//The function returns a html page in "http://localhost:8090/home" that allows to insert new data
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getHome() throws IOException {    	
-        return "Home page coming soon.. To start to use it go to 'localhost:8090/index'";
+    	return FileTools.readFile(resource+"home.html");
     }
     
     //GET controller
-	//The function returns a html page in "http://localhost:8090/index" that allows to insert new data
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+	//The function returns a html page in "http://localhost:8090/submit" that allows to insert new data
+    @RequestMapping(value = "/submit", method = RequestMethod.GET)
     public String getSubmit() throws IOException {    	
-        return FileTools.readFile("src/main/resources/templates/submit.html").replaceAll("id_set", Long.toString(id++));
+        return FileTools.readFile(resource+"submit.html").replaceAll("id_set", Long.toString(id++));
     }
     
     
@@ -83,7 +89,7 @@ public class WebController {
 
     
     //PUT controller
-    //The function returns a html page in "http://localhost:8090/index" that allows to update or remove a data
+    //The function returns a html page in "http://localhost:8090/submit" that allows to update or remove a data
     @RequestMapping(value = "/update_delete")
     public void update_delete(@RequestParam(value="id", defaultValue="3") long id,
     		@RequestParam(value="first_name", defaultValue="null") String first_name,
@@ -116,7 +122,7 @@ public class WebController {
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     @ResponseBody
     public String search()  throws IOException {
-        return FileTools.readFile("src/main/resources/templates/search.html");
+        return FileTools.readFile(resource+"search.html");
     }
     
     //GET controller
@@ -137,7 +143,7 @@ public class WebController {
     	email = Application.hashmap.hmap.get(id).getEmail().toString();
     	website = Application.hashmap.hmap.get(id).getWebSite().toString();
 
-    	String output = FileTools.readFile("src/main/resources/templates/found.html");
+    	String output = FileTools.readFile(resource+"found.html");
         return output.replaceAll("identity", Long.toString(id))
         				.replaceAll("old_first_name",first_name)
         				.replaceAll("old_last_name", last_name)
@@ -154,7 +160,25 @@ public class WebController {
     //The function returns a html page in "http://localhost:8090/hashmap" that returns all elements of the hashamp.
     @RequestMapping(value = "/hashmap", method = RequestMethod.GET)
     public String HashMapContained() throws IOException {
-        return FileTools.HashMapHtml("src/main/resources/templates/HashMapContaining.html");
+        return FileTools.HashMapHtml(resource+"HashMapContaining.html");
     }
- }	
+    
+    
+   
+    
+    @RequestMapping(value = "/file", method = RequestMethod.GET)
+    public FileSystemResource getFileJS(@RequestParam(value = "filename") String filename) {
+    	if(filename.contains("js")) {
+    		return new FileSystemResource(resource+"script/"+filename); 
+    	} else if(filename.contains("css")) {
+            return new FileSystemResource(resource+"css/"+filename); 
+    	} else if(filename.contains("jpeg")) {
+            return new FileSystemResource(resource+"img/"+filename);
+    	}
+    	
+    	return null;
+    }
+
+   
+}	
 
