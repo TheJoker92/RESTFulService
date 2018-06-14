@@ -4,9 +4,7 @@
 	border-radius: 13px;
 	color: white;
 	padding: 5px 15px;
-	text-align: right;
-	position:relative;
-	left: 30%
+	text-align: center;
 }
 
 .login_button {
@@ -74,7 +72,7 @@ form{
 
 
 .white-box{
-	width: 50%; height: 60%; margin-top: 50px; margin-left: auto; margin-right: auto;   
+	width: 400px; height: 60%; margin-top: 50px; margin-left: auto; margin-right: auto;   
   
 background: rgba(255,255,255,0.9);
 padding: 30px;
@@ -86,9 +84,5 @@ box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 -ms-border-radius: 5px;
 -o-border-radius: 5px;
 border-radius: 5px;
-max-width:415.35px;
-min-width:396px;
-max-height:497.33px;
-min-hright:223px
 }
      /* reduces the width of the form to only what is necessary */
